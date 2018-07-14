@@ -5,11 +5,17 @@ services:
     container_name: vaultserver
     ports:
       - "8200:8200"
+    networks:
+      vault_net:
+        ipv4_address: 172.16.238.10
   ssh:
     build: ssh/.
     container_name: ssh
     ports:
       - "3000:22"
+    networks:
+      vault_net:
+        ipv4_address: 172.16.238.20
   mariadb:
     image: mariadb:latest
     container_name: mariadb
@@ -17,8 +23,22 @@ services:
       MYSQL_ROOT_PASSWORD: mysql
     ports:
       - "3306:3306"
+    networks:
+      vault_net:
+        ipv4_address: 172.16.238.30
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins
     ports:
       - "8080:8080"
+    networks:
+      vault_net:
+        ipv4_address: 172.16.238.40
+networks:
+  vault_net:
+    driver: bridge
+    ipam:
+      driver: default  
+      config:
+      -
+          subnet: 172.16.238.0/24
