@@ -1,0 +1,20 @@
+version: '3'
+services:
+  vault:
+    image: vault
+    ports:
+      - "8200:8200"
+  ssh:
+    build: ssh/.
+    ports:
+      - "3000:22"
+  mariadb:
+    image: mariadb:latest
+    environment: 
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
