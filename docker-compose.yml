@@ -2,19 +2,23 @@ version: '3'
 services:
   vault:
     image: vault
+    container_name: vaultserver
     ports:
       - "8200:8200"
   ssh:
     build: ssh/.
+    container_name: ssh
     ports:
       - "3000:22"
   mariadb:
     image: mariadb:latest
+    container_name: mariadb
     environment: 
       MYSQL_ROOT_PASSWORD: mysql
     ports:
       - "3306:3306"
   jenkins:
     image: jenkins/jenkins:lts
+    container_name: jenkins
     ports:
       - "8080:8080"
