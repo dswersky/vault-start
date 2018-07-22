@@ -1,7 +1,8 @@
 version: '3'
 services:
   vault:
-    image: vault
+    build: vault/.
+    command: vault server -config=/vault/config/config.hcl
     container_name: vaultserver
     ports:
       - "8200:8200"
