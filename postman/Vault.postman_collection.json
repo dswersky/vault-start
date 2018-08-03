@@ -30,9 +30,12 @@
 		{
 			"name": "init-server",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"secret_shares\": 5,\n  \"secret_threshold\": 3\n}"
+				},
 				"url": {
 					"raw": "http://localhost:8200/v1/sys/init",
 					"protocol": "http",
@@ -79,9 +82,16 @@
 					{
 						"key": "X-Vault-Token",
 						"value": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\":\"value\",\n\t\"user\":\"dbUser\"\n}"
+				},
 				"url": {
 					"raw": "http://localhost:8200/v1/secret/data/mySecret",
 					"protocol": "http",
@@ -107,9 +117,16 @@
 					{
 						"key": "X-Vault-Token",
 						"value": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\":\"othervalue\",\n\t\"user\":\"dbUser\"\n}"
+				},
 				"url": {
 					"raw": "http://localhost:8200/v1/secret/data/mySecret",
 					"protocol": "http",
@@ -218,7 +235,12 @@
 			"name": "create-userpass-user",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "X-Vault-Token",
+						"value": ""
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"username\":\"vaultuser\",\n\t\"password\":\"vault\"\n\t\n}"
