@@ -184,7 +184,7 @@
 			"response": []
 		},
 		{
-			"name": "enable-secrets-engine",
+			"name": "enable-userpass-auth",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -209,6 +209,60 @@
 						"sys",
 						"auth",
 						"userpass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-userpass-user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"vaultuser\",\n\t\"password\":\"vault\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8200/v1/auth/userpass/users/vaultuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"v1",
+						"auth",
+						"userpass",
+						"users",
+						"vaultuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userpass-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\":\"vault\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8200/v1/auth/userpass/login/vaultuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"v1",
+						"auth",
+						"userpass",
+						"login",
+						"vaultuser"
 					]
 				}
 			},
