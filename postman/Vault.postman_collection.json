@@ -55,9 +55,12 @@
 		{
 			"name": "unseal",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\":\"\"\n}"
+				},
 				"url": {
 					"raw": "http://localhost:8200/v1/sys/unseal",
 					"protocol": "http",
@@ -90,7 +93,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"key\":\"value\",\n\t\"user\":\"dbUser\"\n}"
+					"raw": "{\n\t\"key\":\"user\",\n\t\"value\":\"dbUser\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8200/v1/secret/data/mySecret",
@@ -125,7 +128,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"key\":\"othervalue\",\n\t\"user\":\"dbUser\"\n}"
+					"raw": "{\n\t\"key\":\"user\",\n\t\"value\":\"dbUser2\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8200/v1/secret/data/mySecret",
@@ -243,7 +246,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\":\"vaultuser\",\n\t\"password\":\"vault\"\n\t\n}"
+					"raw": "{\n\t\"username\":\"vaultuser\",\n\t\"password\":\"vault\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8200/v1/auth/userpass/users/vaultuser",
